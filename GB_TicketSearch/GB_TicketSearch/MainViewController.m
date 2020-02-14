@@ -6,18 +6,25 @@
 //  Copyright © 2020 Vitaly_Shishlayannikov. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 
-@interface ViewController ()
+@interface MainViewController ()
 
 @end
 
-@implementation ViewController
+@implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor greenColor];
+    
+    CGRect redViewFrame = CGRectMake(40.0, 40.0, [UIScreen mainScreen].bounds.size.width - 80.0, [UIScreen mainScreen].bounds.size.height - 80.0);
+    UIView *redView = [[UIView alloc] initWithFrame: redViewFrame];
+    redView.backgroundColor = [UIColor redColor];
+    
+    [self.view addSubview:redView];
 }
-
 
 @end

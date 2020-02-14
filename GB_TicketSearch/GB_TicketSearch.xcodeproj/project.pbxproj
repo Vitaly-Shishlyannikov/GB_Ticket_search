@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		589C1D8E23F6ACDD00A45CD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 589C1D8D23F6ACDD00A45CD5 /* AppDelegate.m */; };
-		589C1D9123F6ACDD00A45CD5 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 589C1D9023F6ACDD00A45CD5 /* SceneDelegate.m */; };
-		589C1D9423F6ACDD00A45CD5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 589C1D9323F6ACDD00A45CD5 /* ViewController.m */; };
-		589C1D9723F6ACDD00A45CD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 589C1D9523F6ACDD00A45CD5 /* Main.storyboard */; };
+		589C1D9423F6ACDD00A45CD5 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 589C1D9323F6ACDD00A45CD5 /* MainViewController.m */; };
 		589C1D9923F6ACDE00A45CD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 589C1D9823F6ACDE00A45CD5 /* Assets.xcassets */; };
 		589C1D9C23F6ACDE00A45CD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 589C1D9A23F6ACDE00A45CD5 /* LaunchScreen.storyboard */; };
 		589C1D9F23F6ACDE00A45CD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 589C1D9E23F6ACDE00A45CD5 /* main.m */; };
@@ -20,11 +18,8 @@
 		589C1D8923F6ACDD00A45CD5 /* GB_TicketSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GB_TicketSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		589C1D8C23F6ACDD00A45CD5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		589C1D8D23F6ACDD00A45CD5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		589C1D8F23F6ACDD00A45CD5 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		589C1D9023F6ACDD00A45CD5 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		589C1D9223F6ACDD00A45CD5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		589C1D9323F6ACDD00A45CD5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		589C1D9623F6ACDD00A45CD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		589C1D9223F6ACDD00A45CD5 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		589C1D9323F6ACDD00A45CD5 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		589C1D9823F6ACDE00A45CD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		589C1D9B23F6ACDE00A45CD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		589C1D9D23F6ACDE00A45CD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,11 +58,8 @@
 			children = (
 				589C1D8C23F6ACDD00A45CD5 /* AppDelegate.h */,
 				589C1D8D23F6ACDD00A45CD5 /* AppDelegate.m */,
-				589C1D8F23F6ACDD00A45CD5 /* SceneDelegate.h */,
-				589C1D9023F6ACDD00A45CD5 /* SceneDelegate.m */,
-				589C1D9223F6ACDD00A45CD5 /* ViewController.h */,
-				589C1D9323F6ACDD00A45CD5 /* ViewController.m */,
-				589C1D9523F6ACDD00A45CD5 /* Main.storyboard */,
+				589C1D9223F6ACDD00A45CD5 /* MainViewController.h */,
+				589C1D9323F6ACDD00A45CD5 /* MainViewController.m */,
 				589C1D9823F6ACDE00A45CD5 /* Assets.xcassets */,
 				589C1D9A23F6ACDE00A45CD5 /* LaunchScreen.storyboard */,
 				589C1D9D23F6ACDE00A45CD5 /* Info.plist */,
@@ -135,7 +127,6 @@
 			files = (
 				589C1D9C23F6ACDE00A45CD5 /* LaunchScreen.storyboard in Resources */,
 				589C1D9923F6ACDE00A45CD5 /* Assets.xcassets in Resources */,
-				589C1D9723F6ACDD00A45CD5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,24 +137,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				589C1D9423F6ACDD00A45CD5 /* ViewController.m in Sources */,
+				589C1D9423F6ACDD00A45CD5 /* MainViewController.m in Sources */,
 				589C1D8E23F6ACDD00A45CD5 /* AppDelegate.m in Sources */,
 				589C1D9F23F6ACDE00A45CD5 /* main.m in Sources */,
-				589C1D9123F6ACDD00A45CD5 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		589C1D9523F6ACDD00A45CD5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				589C1D9623F6ACDD00A45CD5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		589C1D9A23F6ACDE00A45CD5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,11 +274,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2DDX593STW;
 				INFOPLIST_FILE = GB_TicketSearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Vitaly-Shishlayannikov.GB-TicketSearch";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Vitaly-Shishlayannikov.GB-TicketSearch1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -309,11 +292,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2DDX593STW;
 				INFOPLIST_FILE = GB_TicketSearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Vitaly-Shishlayannikov.GB-TicketSearch";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Vitaly-Shishlayannikov.GB-TicketSearch1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
