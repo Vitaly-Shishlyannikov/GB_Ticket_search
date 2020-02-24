@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MainViewController.h"
+#import "CountriesViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,7 +21,7 @@
     CGRect windowFrame = [UIScreen mainScreen].bounds;
     self.window = [[UIWindow alloc] initWithFrame:windowFrame];
     
-    MainViewController *mainViewController = [[MainViewController alloc] init];
+    CountriesViewController *mainViewController = [[CountriesViewController alloc] init];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
     
