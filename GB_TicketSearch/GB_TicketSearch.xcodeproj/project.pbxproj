@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5842D34A240C62CF00F861EE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5842D349240C62CF00F861EE /* Default-568h@2x.png */; };
 		587C9A702403B2A500E09907 /* CountryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 587C9A6F2403B2A500E09907 /* CountryTableViewCell.m */; };
 		587C9A732403C64600E09907 /* CitiesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587C9A722403C64600E09907 /* CitiesTableViewController.m */; };
 		589C1D8E23F6ACDD00A45CD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 589C1D8D23F6ACDD00A45CD5 /* AppDelegate.m */; };
@@ -14,9 +15,12 @@
 		589C1D9923F6ACDE00A45CD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 589C1D9823F6ACDE00A45CD5 /* Assets.xcassets */; };
 		589C1D9C23F6ACDE00A45CD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 589C1D9A23F6ACDE00A45CD5 /* LaunchScreen.storyboard */; };
 		589C1D9F23F6ACDE00A45CD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 589C1D9E23F6ACDE00A45CD5 /* main.m */; };
+		58ECD161240C499F00224FAB /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ECD160240C499F00224FAB /* APIManager.m */; };
+		58ECD164240C4D8C00224FAB /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ECD163240C4D8C00224FAB /* News.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5842D349240C62CF00F861EE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		587C9A6E2403B2A500E09907 /* CustomTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		587C9A6F2403B2A500E09907 /* CountryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountryTableViewCell.m; sourceTree = "<group>"; };
 		587C9A712403C64600E09907 /* CitiesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CitiesTableViewController.h; sourceTree = "<group>"; };
@@ -30,6 +34,10 @@
 		589C1D9B23F6ACDE00A45CD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		589C1D9D23F6ACDE00A45CD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		589C1D9E23F6ACDE00A45CD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		58ECD15F240C499F00224FAB /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		58ECD160240C499F00224FAB /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
+		58ECD162240C4D8C00224FAB /* News.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
+		58ECD163240C4D8C00224FAB /* News.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +54,7 @@
 		589C1D8023F6ACDD00A45CD5 = {
 			isa = PBXGroup;
 			children = (
+				5842D349240C62CF00F861EE /* Default-568h@2x.png */,
 				589C1D8B23F6ACDD00A45CD5 /* GB_TicketSearch */,
 				589C1D8A23F6ACDD00A45CD5 /* Products */,
 			);
@@ -74,6 +83,10 @@
 				587C9A722403C64600E09907 /* CitiesTableViewController.m */,
 				587C9A6E2403B2A500E09907 /* CustomTableViewCell.h */,
 				587C9A6F2403B2A500E09907 /* CountryTableViewCell.m */,
+				58ECD15F240C499F00224FAB /* APIManager.h */,
+				58ECD160240C499F00224FAB /* APIManager.m */,
+				58ECD162240C4D8C00224FAB /* News.h */,
+				58ECD163240C4D8C00224FAB /* News.m */,
 			);
 			path = GB_TicketSearch;
 			sourceTree = "<group>";
@@ -137,6 +150,7 @@
 			files = (
 				589C1D9C23F6ACDE00A45CD5 /* LaunchScreen.storyboard in Resources */,
 				589C1D9923F6ACDE00A45CD5 /* Assets.xcassets in Resources */,
+				5842D34A240C62CF00F861EE /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +162,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				589C1D9423F6ACDD00A45CD5 /* CountriesViewController.m in Sources */,
+				58ECD164240C4D8C00224FAB /* News.m in Sources */,
 				589C1D8E23F6ACDD00A45CD5 /* AppDelegate.m in Sources */,
+				58ECD161240C499F00224FAB /* APIManager.m in Sources */,
 				589C1D9F23F6ACDE00A45CD5 /* main.m in Sources */,
 				587C9A702403B2A500E09907 /* CountryTableViewCell.m in Sources */,
 				587C9A732403C64600E09907 /* CitiesTableViewController.m in Sources */,

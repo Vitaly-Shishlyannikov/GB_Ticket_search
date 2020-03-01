@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CountriesViewController.h"
+#import "APIManager.h"
 
 @interface AppDelegate ()
 
@@ -27,6 +28,11 @@
     
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
+    
+    
+    [[APIManager sharedInstance]getNews:^(NSArray * _Nonnull news) {
+        NSLog(@"%@",news);
+    }];
     
     return YES;
 }
