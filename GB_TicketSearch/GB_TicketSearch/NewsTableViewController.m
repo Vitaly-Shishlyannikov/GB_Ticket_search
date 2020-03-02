@@ -26,6 +26,7 @@
         self.title = @"News";
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self.tableView registerClass:[NewsTableViewCell class] forCellReuseIdentifier:NewsCellReuseIdentifier];
+        self.navigationItem.hidesBackButton = YES;
     }
     return self;
 }
@@ -34,16 +35,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.title = @"News";
-
-//   _news = [NSMutableArray arrayWithObjects:@"London", @"Moscow", @"Kiev", @"Paris", @"Berlin", @"Oslo", @"Rome", nil];
-
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 #pragma mark - Table view data source

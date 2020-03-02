@@ -22,7 +22,14 @@
     CGRect windowFrame = [UIScreen mainScreen].bounds;
     self.window = [[UIWindow alloc] initWithFrame:windowFrame];
     
-    UITableViewController *viewController = [[UITableViewController alloc] init];
+    UIViewController *viewController = [[UIViewController alloc]init];
+    CGRect imageFrame = windowFrame;
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageFrame];
+    imageView.image = [UIImage imageNamed:@"News"];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [viewController.view setBackgroundColor:[UIColor whiteColor]];
+    [viewController.view addSubview:imageView];
+    
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
        
@@ -31,6 +38,7 @@
     
     [[APIManager sharedInstance] getNews:^(NSArray * _Nonnull news) {
         NewsTableViewController *newsViewController = [[NewsTableViewController alloc] initWithNews:news];
+        [navigationController.topViewController removeFromParentViewController];
         [navigationController showViewController:newsViewController sender:self];
     }];
       
