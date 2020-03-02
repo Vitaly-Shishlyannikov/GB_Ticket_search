@@ -9,7 +9,6 @@
 #import "NewsTableViewController.h"
 #import "APIManager.h"
 #import "NewsTableViewCell.h"
-#import "CustomTableViewCell.h"
 #import "NewsDetailViewController.h"
 
 #define NewsCellReuseIdentifier @"​NewsCellIdentifier"

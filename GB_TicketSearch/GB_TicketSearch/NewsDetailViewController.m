@@ -29,15 +29,21 @@
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    CGRect contentFrame = CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height / 2);
+    CGRect imageFrame = CGRectMake(0.0, 0.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height / 2);
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageFrame];
+    NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: _article.urlToImage]];
+    imageView.image = [UIImage imageWithData: imageData];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:imageView];
+    
+    CGRect contentFrame = CGRectMake(0.0, CGRectGetMaxY(imageFrame) - 50.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height / 2);
     UILabel *contentView = [[UILabel alloc] initWithFrame:contentFrame];
     contentView.numberOfLines = 0;
-    contentView.font = [UIFont systemFontOfSize:23.0 weight: UIFontWeightMedium];
+    contentView.font = [UIFont systemFontOfSize:20.0 weight: UIFontWeightMedium];
     contentView.text = _article.content;
     [self.view addSubview:contentView];
     
-    
-    CGRect linkButtonFrame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height / 1.2, [UIScreen mainScreen].bounds.size.width, 50.0);
+    CGRect linkButtonFrame = CGRectMake(0.0, [UIScreen mainScreen].bounds.size.height / 1.2, [UIScreen mainScreen].bounds.size.width, 50.0);
     UIButton *linkButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [linkButton setTitle:_article.url forState:UIControlStateNormal];
     linkButton.backgroundColor = [UIColor clearColor];
@@ -45,8 +51,6 @@
     linkButton.frame = linkButtonFrame;
     [linkButton addTarget:self action:@selector(openLinkInSafari:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:linkButton];
-    
-    
 }
 
 -(void)openLinkInSafari:(UIButton *)sender {
