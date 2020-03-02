@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "CountriesViewController.h"
+#import "NewsTableViewController.h"
 #import "APIManager.h"
 
 @interface AppDelegate ()
@@ -22,18 +22,18 @@
     CGRect windowFrame = [UIScreen mainScreen].bounds;
     self.window = [[UIWindow alloc] initWithFrame:windowFrame];
     
-    CountriesViewController *mainViewController = [[CountriesViewController alloc] init];
+    UITableViewController *viewController = [[UITableViewController alloc] init];
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
-    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+       
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
-    
-    [[APIManager sharedInstance]getNews:^(NSArray * _Nonnull news) {
-        NSLog(@"%@",news);
+    [[APIManager sharedInstance] getNews:^(NSArray * _Nonnull news) {
+        NewsTableViewController *newsViewController = [[NewsTableViewController alloc] initWithNews:news];
+        [navigationController showViewController:newsViewController sender:self];
     }];
-    
+      
     return YES;
 }
 

@@ -8,6 +8,7 @@
 //
 
 #import "APIManager.h"
+#import "News.h"
 
 #define API_URL @"http://newsapi.org/v2/top-headlines"
 #define API_SOURCES @"techcrunch"
@@ -42,14 +43,17 @@
 - (void)getNews: (void(^)(NSArray *news))completion {
     NSString *urlString = [NSString stringWithFormat:@"%@?sources=%@&apiKey=%@", API_URL, API_SOURCES, API_TOKEN];
     [self load:urlString withCompletion:^(id _Nullable result) {
-        NSDictionary *response = result;
-        NSMutableArray *array = [NSMutableArray new];
-        if(response){
-            array = [response valueForKey:@"articles"];
+        if(result){
+            NSMutableArray *json = [result valueForKey:@"articles"];
+            NSMutableArray *newsArray = [NSMutableArray new];
+            for (NSDictionary *item in json){
+                News *article =[[News alloc] initWithDictionary:item];
+                [newsArray addObject:article];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                  completion(newsArray);
+            });
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(array);
-        });
     }];
 }
 
