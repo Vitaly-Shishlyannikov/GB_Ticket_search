@@ -24,7 +24,7 @@
     if(self) {
         _news = news;
         self.title = @"News";
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         [self.tableView registerClass:[NewsTableViewCell class] forCellReuseIdentifier:NewsCellReuseIdentifier];
         self.navigationItem.hidesBackButton = YES;
     }

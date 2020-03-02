@@ -30,16 +30,17 @@
     [viewController.view setBackgroundColor:[UIColor whiteColor]];
     [viewController.view addSubview:imageView];
     
-    
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
        
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
     [[APIManager sharedInstance] getNews:^(NSArray * _Nonnull news) {
+        
         NewsTableViewController *newsViewController = [[NewsTableViewController alloc] initWithNews:news];
         [navigationController.topViewController removeFromParentViewController];
         [navigationController showViewController:newsViewController sender:self];
+        sleep(2);
     }];
       
     return YES;
