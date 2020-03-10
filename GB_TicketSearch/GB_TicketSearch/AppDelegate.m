@@ -22,6 +22,9 @@
     CGRect windowFrame = [UIScreen mainScreen].bounds;
     self.window = [[UIWindow alloc] initWithFrame:windowFrame];
     
+    MapViewController *mapViewConroller = [[MapViewController alloc] init];
+    
+    
     UIViewController *viewController = [[UIViewController alloc]init];
     CGRect imageFrame = windowFrame;
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageFrame];
@@ -30,18 +33,18 @@
     [viewController.view setBackgroundColor:[UIColor whiteColor]];
     [viewController.view addSubview:imageView];
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mapViewConroller];
        
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
-    [[APIManager sharedInstance] getNews:^(NSArray * _Nonnull news) {
-        
-        NewsTableViewController *newsViewController = [[NewsTableViewController alloc] initWithNews:news];
-        [navigationController.topViewController removeFromParentViewController];
-        [navigationController showViewController:newsViewController sender:self];
-        sleep(2);
-    }];
+//    [[APIManager sharedInstance] getNews:^(NSArray * _Nonnull news) {
+//
+//        NewsTableViewController *newsViewController = [[NewsTableViewController alloc] initWithNews:news];
+//        [navigationController.topViewController removeFromParentViewController];
+//        [navigationController showViewController:newsViewController sender:self];
+//        sleep(2);
+//    }];
       
     return YES;
 }

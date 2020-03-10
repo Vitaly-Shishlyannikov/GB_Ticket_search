@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5801079424176E4700DD61A8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5801079324176E4700DD61A8 /* MapViewController.m */; };
 		5842D34A240C62CF00F861EE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5842D349240C62CF00F861EE /* Default-568h@2x.png */; };
 		5842D34D240CDEA500F861EE /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842D34C240CDEA500F861EE /* NewsTableViewController.m */; };
 		5842D350240CE07300F861EE /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842D34F240CE07300F861EE /* NewsTableViewCell.m */; };
 		5842D353240CF74000F861EE /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842D352240CF74000F861EE /* NewsDetailViewController.m */; };
+		586ADAD8241672CB00975BCC /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 586ADAD7241672CB00975BCC /* LocationService.m */; };
 		589C1D8E23F6ACDD00A45CD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 589C1D8D23F6ACDD00A45CD5 /* AppDelegate.m */; };
 		589C1D9923F6ACDE00A45CD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 589C1D9823F6ACDE00A45CD5 /* Assets.xcassets */; };
 		589C1D9C23F6ACDE00A45CD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 589C1D9A23F6ACDE00A45CD5 /* LaunchScreen.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5801079224176E4700DD61A8 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		5801079324176E4700DD61A8 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		5842D349240C62CF00F861EE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5842D34B240CDEA500F861EE /* NewsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsTableViewController.h; sourceTree = "<group>"; };
 		5842D34C240CDEA500F861EE /* NewsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewController.m; sourceTree = "<group>"; };
@@ -27,6 +31,8 @@
 		5842D34F240CE07300F861EE /* NewsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
 		5842D351240CF74000F861EE /* NewsDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
 		5842D352240CF74000F861EE /* NewsDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsDetailViewController.m; sourceTree = "<group>"; };
+		586ADAD6241672CB00975BCC /* LocationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
+		586ADAD7241672CB00975BCC /* LocationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		589C1D8923F6ACDD00A45CD5 /* GB_TicketSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GB_TicketSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		589C1D8C23F6ACDD00A45CD5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		589C1D8D23F6ACDD00A45CD5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -87,6 +93,10 @@
 				58ECD163240C4D8C00224FAB /* News.m */,
 				58ECD15F240C499F00224FAB /* APIManager.h */,
 				58ECD160240C499F00224FAB /* APIManager.m */,
+				586ADAD6241672CB00975BCC /* LocationService.h */,
+				586ADAD7241672CB00975BCC /* LocationService.m */,
+				5801079224176E4700DD61A8 /* MapViewController.h */,
+				5801079324176E4700DD61A8 /* MapViewController.m */,
 			);
 			path = GB_TicketSearch;
 			sourceTree = "<group>";
@@ -164,9 +174,11 @@
 				5842D34D240CDEA500F861EE /* NewsTableViewController.m in Sources */,
 				58ECD164240C4D8C00224FAB /* News.m in Sources */,
 				589C1D8E23F6ACDD00A45CD5 /* AppDelegate.m in Sources */,
+				5801079424176E4700DD61A8 /* MapViewController.m in Sources */,
 				58ECD161240C499F00224FAB /* APIManager.m in Sources */,
 				5842D350240CE07300F861EE /* NewsTableViewCell.m in Sources */,
 				5842D353240CF74000F861EE /* NewsDetailViewController.m in Sources */,
+				586ADAD8241672CB00975BCC /* LocationService.m in Sources */,
 				589C1D9F23F6ACDE00A45CD5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
