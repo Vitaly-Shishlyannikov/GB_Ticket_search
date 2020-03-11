@@ -53,7 +53,7 @@
     [self.view addSubview:linkButton];
 }
 
--(void)openLinkInSafari:(UIButton *)sender {
+- (void)openLinkInSafari:(UIButton *)sender {
       NSURL *url = [[ NSURL alloc] initWithString: _article.url ];
       [[UIApplication sharedApplication] openURL:url];
   }

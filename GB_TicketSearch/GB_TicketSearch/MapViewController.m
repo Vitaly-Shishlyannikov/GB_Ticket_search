@@ -18,10 +18,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     _mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     _mapView.showsUserLocation = YES;
     [self.view addSubview:_mapView];
+    
+    _mapView.delegate = self;
     
     _locationService = [[LocationService alloc] init];
     
@@ -50,6 +52,29 @@
     annotation.coordinate = CLLocationCoordinate2DMake(55.755826, 37.6173);
     [_mapView addAnnotation:annotation];
 }
+
+#pragma mark -MKMaprViewDelegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    static NSString *identifier = @"MarkIdentifier";
+    MKMarkerAnnotationView *annotationView = (MKMarkerAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    if(!annotationView) {
+        annotationView = [[MKMarkerAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        annotationView.canShowCallout = YES;
+        annotationView.calloutOffset = CGPointMake(0.0, 5.0);
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        [button addTarget:self action:(@selector(btnPressed:)) forControlEvents:UIControlEventTouchUpInside];
+        annotationView.rightCalloutAccessoryView = button;
+        
+    }
+    annotationView.annotation = annotation;
+    return annotationView;
+}
+
+-(void)btnPressed:(UIButton *)sender {
+    NSLog(@"Button pressed");
+}
+
 
 
 /*
