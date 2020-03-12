@@ -65,7 +65,6 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
         [button addTarget:self action:(@selector(btnPressed:)) forControlEvents:UIControlEventTouchUpInside];
         annotationView.rightCalloutAccessoryView = button;
-        
     }
     annotationView.annotation = annotation;
     return annotationView;
