@@ -9,6 +9,7 @@
 #import "TabBarController.h"
 #import "NewsTableViewController.h"
 #import "MapViewController.h"
+#import "PhotoViewController.h"
 
 @implementation TabBarController
 
@@ -16,9 +17,8 @@
     self = [super initWithNibName:nil bundle:nil];
     if(self) {
         
-        UIViewController *vc = [[UIViewController alloc] init];
-        vc.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMostViewed tag:0];
-        UINavigationController *navc = [[UINavigationController alloc] initWithRootViewController:vc];
+        PhotoViewController *photosVC = [[PhotoViewController alloc]init];
+        photosVC.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMostViewed tag:0];
         
         MapViewController *mapViewConroller = [[MapViewController alloc] init];
         mapViewConroller.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:1];
@@ -27,7 +27,7 @@
         newsVC.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:2];
         UINavigationController *newsNC = [[UINavigationController alloc] initWithRootViewController:newsVC];
         
-        self.viewControllers = @[navc, mapViewConroller, newsNC];
+        self.viewControllers = @[photosVC, mapViewConroller, newsNC];
         self.tabBar.tintColor = [UIColor greenColor];
         self.selectedIndex = 0;
         
