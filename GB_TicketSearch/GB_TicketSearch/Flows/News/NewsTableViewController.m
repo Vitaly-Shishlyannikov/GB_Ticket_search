@@ -35,6 +35,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[APIManager sharedInstance] getNews:^(NSArray * _Nonnull news) {
+        _news = news;
+        [self.tableView reloadData];
+    }];
 }
 
 #pragma mark - Table view data source

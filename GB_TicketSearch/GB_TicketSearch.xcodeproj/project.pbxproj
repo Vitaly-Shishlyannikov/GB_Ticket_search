@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5801079424176E4700DD61A8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5801079324176E4700DD61A8 /* MapViewController.m */; };
+		5834023F241F635D000A44CF /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5834023E241F635D000A44CF /* TabBarController.m */; };
 		5842D34A240C62CF00F861EE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5842D349240C62CF00F861EE /* Default-568h@2x.png */; };
 		5842D34D240CDEA500F861EE /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842D34C240CDEA500F861EE /* NewsTableViewController.m */; };
 		5842D350240CE07300F861EE /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842D34F240CE07300F861EE /* NewsTableViewCell.m */; };
@@ -24,6 +25,8 @@
 /* Begin PBXFileReference section */
 		5801079224176E4700DD61A8 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		5801079324176E4700DD61A8 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		5834023D241F635D000A44CF /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		5834023E241F635D000A44CF /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		5842D349240C62CF00F861EE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5842D34B240CDEA500F861EE /* NewsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsTableViewController.h; sourceTree = "<group>"; };
 		5842D34C240CDEA500F861EE /* NewsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewController.m; sourceTree = "<group>"; };
@@ -57,6 +60,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58340243241F6C6F000A44CF /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				58340248241F6DC5000A44CF /* System */,
+				58340247241F6C8B000A44CF /* TabBarController */,
+				58340246241F6C81000A44CF /* PhotoCollection */,
+				58340245241F6C7C000A44CF /* Map */,
+				58340244241F6C77000A44CF /* News */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		58340244241F6C77000A44CF /* News */ = {
+			isa = PBXGroup;
+			children = (
+				5842D34B240CDEA500F861EE /* NewsTableViewController.h */,
+				5842D34C240CDEA500F861EE /* NewsTableViewController.m */,
+				5842D351240CF74000F861EE /* NewsDetailViewController.h */,
+				5842D352240CF74000F861EE /* NewsDetailViewController.m */,
+				5842D34E240CE07300F861EE /* NewsTableViewCell.h */,
+				5842D34F240CE07300F861EE /* NewsTableViewCell.m */,
+				58ECD162240C4D8C00224FAB /* News.h */,
+				58ECD163240C4D8C00224FAB /* News.m */,
+				58ECD15F240C499F00224FAB /* APIManager.h */,
+				58ECD160240C499F00224FAB /* APIManager.m */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		58340245241F6C7C000A44CF /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				586ADAD6241672CB00975BCC /* LocationService.h */,
+				586ADAD7241672CB00975BCC /* LocationService.m */,
+				5801079224176E4700DD61A8 /* MapViewController.h */,
+				5801079324176E4700DD61A8 /* MapViewController.m */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		58340246241F6C81000A44CF /* PhotoCollection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PhotoCollection;
+			sourceTree = "<group>";
+		};
+		58340247241F6C8B000A44CF /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				5834023D241F635D000A44CF /* TabBarController.h */,
+				5834023E241F635D000A44CF /* TabBarController.m */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		58340248241F6DC5000A44CF /* System */ = {
+			isa = PBXGroup;
+			children = (
+				589C1D8C23F6ACDD00A45CD5 /* AppDelegate.h */,
+				589C1D8D23F6ACDD00A45CD5 /* AppDelegate.m */,
+				589C1D9823F6ACDE00A45CD5 /* Assets.xcassets */,
+				589C1D9A23F6ACDE00A45CD5 /* LaunchScreen.storyboard */,
+				589C1D9D23F6ACDE00A45CD5 /* Info.plist */,
+				589C1D9E23F6ACDE00A45CD5 /* main.m */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
 		589C1D8023F6ACDD00A45CD5 = {
 			isa = PBXGroup;
 			children = (
@@ -77,26 +149,7 @@
 		589C1D8B23F6ACDD00A45CD5 /* GB_TicketSearch */ = {
 			isa = PBXGroup;
 			children = (
-				589C1D8C23F6ACDD00A45CD5 /* AppDelegate.h */,
-				589C1D8D23F6ACDD00A45CD5 /* AppDelegate.m */,
-				589C1D9823F6ACDE00A45CD5 /* Assets.xcassets */,
-				589C1D9A23F6ACDE00A45CD5 /* LaunchScreen.storyboard */,
-				589C1D9D23F6ACDE00A45CD5 /* Info.plist */,
-				589C1D9E23F6ACDE00A45CD5 /* main.m */,
-				5842D34B240CDEA500F861EE /* NewsTableViewController.h */,
-				5842D34C240CDEA500F861EE /* NewsTableViewController.m */,
-				5842D351240CF74000F861EE /* NewsDetailViewController.h */,
-				5842D352240CF74000F861EE /* NewsDetailViewController.m */,
-				5842D34E240CE07300F861EE /* NewsTableViewCell.h */,
-				5842D34F240CE07300F861EE /* NewsTableViewCell.m */,
-				58ECD162240C4D8C00224FAB /* News.h */,
-				58ECD163240C4D8C00224FAB /* News.m */,
-				58ECD15F240C499F00224FAB /* APIManager.h */,
-				58ECD160240C499F00224FAB /* APIManager.m */,
-				586ADAD6241672CB00975BCC /* LocationService.h */,
-				586ADAD7241672CB00975BCC /* LocationService.m */,
-				5801079224176E4700DD61A8 /* MapViewController.h */,
-				5801079324176E4700DD61A8 /* MapViewController.m */,
+				58340243241F6C6F000A44CF /* Flows */,
 			);
 			path = GB_TicketSearch;
 			sourceTree = "<group>";
@@ -178,6 +231,7 @@
 				58ECD161240C499F00224FAB /* APIManager.m in Sources */,
 				5842D350240CE07300F861EE /* NewsTableViewCell.m in Sources */,
 				5842D353240CF74000F861EE /* NewsDetailViewController.m in Sources */,
+				5834023F241F635D000A44CF /* TabBarController.m in Sources */,
 				586ADAD8241672CB00975BCC /* LocationService.m in Sources */,
 				589C1D9F23F6ACDE00A45CD5 /* main.m in Sources */,
 			);
