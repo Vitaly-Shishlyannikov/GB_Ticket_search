@@ -8,10 +8,15 @@
 
 #import "PhotoViewController.h"
 #import "PhotoCollectionViewCell.h"
+#import "ResultsViewController.h"
 
-@interface PhotoViewController ()
+@interface PhotoViewController () <UISearchResultsUpdating>
+
+@property(nonatomic,strong) UISearchController *searchController;
+@property(nonatomic,strong) ResultsViewController *resultsController;
 @property(nonatomic) NSInteger tmpIndex;
 @property(nonatomic, strong) NSMutableArray *photosArray;
+
 - (void)showPicker;
 - (void)insertImageInArray:(UIImage *)image;
 
@@ -23,7 +28,7 @@
     [super viewDidLoad];
     
     _photosArray = [NSMutableArray new];
-    for (int i = 0; i < 11; i++)
+    for (int i = 0; i < 12; i++)
     [_photosArray addObject: [UIImage systemImageNamed:@"plus.circle"]];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -33,24 +38,30 @@
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
     _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
+    _collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
     _collectionView.backgroundColor = [UIColor whiteColor];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     [_collectionView registerClass:[PhotoCollectionViewCell class] forCellWithReuseIdentifier:@"ReuseIdentifier"];
     
+    _resultsController = [[ResultsViewController alloc] init];
+    
+    _searchController = [[UISearchController alloc] initWithSearchResultsController:_resultsController];
+    _searchController.searchResultsUpdater = self;
+    _searchController.searchBar.frame = CGRectMake(0, -50, _collectionView.bounds.size.width, 50);
+    
+    [_collectionView addSubview: _searchController.searchBar];
     [self.view addSubview:_collectionView];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    if(searchController.searchBar.text) {
+        _resultsController.results = [self.photosArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF CONTAINS[cd]%@", searchController.searchBar.text]];
+        
+    }
 }
-*/
 
+#pragma mark - CollectionViewDataSource
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [_photosArray count];
@@ -70,16 +81,13 @@
     [self showPicker];
 }
 
+#pragma mark - PickerController
+
 - (void)showPicker {
     UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
     pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     pickerController.delegate = self;
     [self presentViewController:pickerController animated:YES completion:nil];
-}
-
-- (void)insertImageInArray:(UIImage *)image {
-    [_photosArray replaceObjectAtIndex:_tmpIndex withObject:image];
-    [self.collectionView reloadData];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
@@ -93,6 +101,11 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)insertImageInArray:(UIImage *)image {
+    [_photosArray replaceObjectAtIndex:_tmpIndex withObject:image];
+    [self.collectionView reloadData];
 }
 
 @end

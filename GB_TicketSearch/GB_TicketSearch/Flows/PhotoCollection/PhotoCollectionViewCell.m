@@ -15,20 +15,13 @@
     self = [super initWithFrame:frame];
     if (self) {
         _photoView = [[UIImageView alloc] initWithFrame:self.contentView.frame];
-        _photoView.backgroundColor = [UIColor blueColor];
+        _photoView.backgroundColor = [UIColor lightGrayColor];
         _photoView.bounds = self.contentView.bounds;
         _photoView.center = self.contentView.center;
         
         [self.contentView addSubview:_photoView];
-        
     }
     return self;
-}
-
-
-
-- (void)prepareForReuse {
-    
 }
 
 @end

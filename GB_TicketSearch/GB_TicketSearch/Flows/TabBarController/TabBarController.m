@@ -28,7 +28,7 @@
         UINavigationController *newsNC = [[UINavigationController alloc] initWithRootViewController:newsVC];
         
         self.viewControllers = @[photosVC, mapViewConroller, newsNC];
-        self.tabBar.tintColor = [UIColor greenColor];
+        self.tabBar.tintColor = [UIColor blueColor];
         self.selectedIndex = 0;
         
     }

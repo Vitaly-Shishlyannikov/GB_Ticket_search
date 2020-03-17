@@ -20,6 +20,7 @@
 		589C1D9923F6ACDE00A45CD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 589C1D9823F6ACDE00A45CD5 /* Assets.xcassets */; };
 		589C1D9C23F6ACDE00A45CD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 589C1D9A23F6ACDE00A45CD5 /* LaunchScreen.storyboard */; };
 		589C1D9F23F6ACDE00A45CD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 589C1D9E23F6ACDE00A45CD5 /* main.m */; };
+		58ABD1BC242108EE0025E25F /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ABD1BB242108EE0025E25F /* ResultsViewController.m */; };
 		58ECD161240C499F00224FAB /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ECD160240C499F00224FAB /* APIManager.m */; };
 		58ECD164240C4D8C00224FAB /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ECD163240C4D8C00224FAB /* News.m */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,8 @@
 		589C1D9B23F6ACDE00A45CD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		589C1D9D23F6ACDE00A45CD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		589C1D9E23F6ACDE00A45CD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		58ABD1BA242108EE0025E25F /* ResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
+		58ABD1BB242108EE0025E25F /* ResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		58ECD15F240C499F00224FAB /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		58ECD160240C499F00224FAB /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		58ECD162240C4D8C00224FAB /* News.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
@@ -110,6 +113,8 @@
 			children = (
 				5834024F241F7CA9000A44CF /* PhotoViewController.h */,
 				58340250241F7CA9000A44CF /* PhotoViewController.m */,
+				58ABD1BA242108EE0025E25F /* ResultsViewController.h */,
+				58ABD1BB242108EE0025E25F /* ResultsViewController.m */,
 				58340252241F7F20000A44CF /* PhotoCollectionViewCell.h */,
 				58340253241F7F20000A44CF /* PhotoCollectionViewCell.m */,
 			);
@@ -238,6 +243,7 @@
 				586ADAD8241672CB00975BCC /* LocationService.m in Sources */,
 				58340251241F7CA9000A44CF /* PhotoViewController.m in Sources */,
 				589C1D9F23F6ACDE00A45CD5 /* main.m in Sources */,
+				58ABD1BC242108EE0025E25F /* ResultsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
