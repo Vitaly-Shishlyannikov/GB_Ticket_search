@@ -28,8 +28,17 @@
     [super viewDidLoad];
     
     _photosArray = [NSMutableArray new];
-    for (int i = 0; i < 12; i++)
-    [_photosArray addObject: [UIImage systemImageNamed:@"plus.circle"]];
+    for (int i = 0; i < 12; i++) {
+        NSString *iStr = [NSString stringWithFormat:@"%d", i];
+        UIImage *plusImg = [UIImage systemImageNamed:@"plus.circle"];
+        NSArray *onePhotoArray = @[iStr, plusImg];
+        [_photosArray addObject: onePhotoArray];
+    }
+    
+    UIView *subViewForSearchBar = [[UIView alloc] initWithFrame:CGRectMake(0, 40, self.view.bounds.size.width, self.view.bounds.size.height - 50)];
+    [self.view addSubview:subViewForSearchBar];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.minimumLineSpacing = 20.0;   
@@ -37,8 +46,8 @@
     layout.itemSize = CGSizeMake(100.0, 100.0);
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
-    _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
-    _collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, self.view.bounds.size.height -50) collectionViewLayout:layout];
+//    _collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
     _collectionView.backgroundColor = [UIColor whiteColor];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
@@ -48,16 +57,16 @@
     
     _searchController = [[UISearchController alloc] initWithSearchResultsController:_resultsController];
     _searchController.searchResultsUpdater = self;
-    _searchController.searchBar.frame = CGRectMake(0, -50, _collectionView.bounds.size.width, 50);
-    
-    [_collectionView addSubview: _searchController.searchBar];
+    _searchController.searchBar.layer.borderWidth = 1;
+    _searchController.searchBar.layer.borderColor = [[UIColor whiteColor] CGColor];
+
+    [subViewForSearchBar addSubview: _searchController.searchBar];
     [self.view addSubview:_collectionView];
 }
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     if(searchController.searchBar.text) {
         _resultsController.results = [self.photosArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF CONTAINS[cd]%@", searchController.searchBar.text]];
-        
     }
 }
 
@@ -70,7 +79,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ReuseIdentifier" forIndexPath:indexPath];
-    cell.photoView.image = _photosArray[indexPath.item];
+    cell.photoView.image = _photosArray[indexPath.item][1];
     
     return cell;
 }
@@ -104,7 +113,8 @@
 }
 
 - (void)insertImageInArray:(UIImage *)image {
-    [_photosArray replaceObjectAtIndex:_tmpIndex withObject:image];
+    NSString *tmpIndexStr = [NSString stringWithFormat:@"%ld", (long)_tmpIndex];
+    [_photosArray replaceObjectAtIndex:_tmpIndex withObject:@[tmpIndexStr, image]];
     [self.collectionView reloadData];
 }
 
