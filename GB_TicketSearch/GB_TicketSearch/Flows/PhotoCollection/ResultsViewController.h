@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ResultsViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property(nonatomic,strong) UICollectionView *collectionView;
-@property(nonatomic,strong) NSArray *results;
+@property(nonatomic,strong) NSMutableArray *results;
 - (void)update;
 
 @end

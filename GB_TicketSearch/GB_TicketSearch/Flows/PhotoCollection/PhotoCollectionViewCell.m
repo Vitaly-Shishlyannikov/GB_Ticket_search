@@ -16,6 +16,7 @@
     if (self) {
         _photoView = [[UIImageView alloc] initWithFrame:self.contentView.frame];
         _photoView.backgroundColor = [UIColor lightGrayColor];
+        _photoView.contentMode = UIViewContentModeScaleAspectFill;
         _photoView.bounds = self.contentView.bounds;
         _photoView.center = self.contentView.center;
         
