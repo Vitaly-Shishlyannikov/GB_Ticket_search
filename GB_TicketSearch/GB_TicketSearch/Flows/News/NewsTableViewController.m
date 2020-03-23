@@ -22,26 +22,22 @@
     BOOL isFavorites;
 }
 
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    self = [super initWithStyle:style];
+    if(self) {
+        self.title = @"News";
+        [self.tableView registerClass:[NewsTableViewCell class] forCellReuseIdentifier:NewsCellReuseIdentifier];
+    }
+    return self;
+}
+
 - (instancetype)initFavoritesNewsViewController {
     self = [super init];
     if(self) {
         isFavorites = YES;
         self.news = [NSArray new];
         self.title = @"Favorite News";
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self.tableView registerClass:[NewsTableViewCell class] forCellReuseIdentifier:NewsCellReuseIdentifier];
-    }
-    return self;
-}
-
-- (instancetype)initWithNews:(NSArray *)news {
-    self = [super init];
-    if(self) {
-        _news = news;
-        self.title = @"News";
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        [self.tableView registerClass:[NewsTableViewCell class] forCellReuseIdentifier:NewsCellReuseIdentifier];
-        self.navigationItem.hidesBackButton = YES;
     }
     return self;
 }
@@ -57,7 +53,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+
     if(isFavorites) {
         self.navigationController.navigationBar.prefersLargeTitles = YES;
         _news = [[CoreDataHelper sharedInstance] favorites];
@@ -75,6 +71,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NewsCellReuseIdentifier forIndexPath:indexPath];
+    if(!cell) {
+        cell = [[NewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NewsCellReuseIdentifier];
+    }
     
     if(isFavorites) {
         cell.favoriteNews = [_news objectAtIndex:indexPath.row];
@@ -82,13 +81,7 @@
         cell.news = [_news objectAtIndex:indexPath.row];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-//    if(!cell) {
-//        cell = [[NewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NewsCellReuseIdentifier];
-//    }
-//    News *article = _news[indexPath.row];
-//    cell.titleLabel.text = article.title;
-    
+   
     return  cell;
 }
 
@@ -98,13 +91,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if(isFavorites) return;
+//    if(isFavorites) return;
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Действия с новостью" message:@"Что сделать с выбранной новостью?" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *favoriteAction;
     if([[CoreDataHelper sharedInstance] isFavorite:[_news objectAtIndex:indexPath.row]]) {
         favoriteAction = [UIAlertAction actionWithTitle:@"Удалить из избранного" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             [[CoreDataHelper sharedInstance] removeFromFavorite:[_news objectAtIndex:indexPath.row]];
+            [tableView reloadData];
         }];
     } else {
         favoriteAction = [UIAlertAction actionWithTitle:@"Добавить в избранное" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

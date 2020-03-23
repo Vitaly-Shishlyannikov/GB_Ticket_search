@@ -33,11 +33,33 @@
     NSURL *docsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     NSURL *storeURL = [docsURL URLByAppendingPathComponent:@"base.sqlite"];
     
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_managedObjectModel];
-    NSPersistentStore *store = [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:nil];
-    if(!store) {
-        abort();
+    
+    @synchronized(self) {
+
+        if (!_persistentStoreCoordinator) {
+            // generic variable to hold any error occurred during context creation
+            NSError *error = nil;
+            NSDictionary *persistentOptions = @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES};
+
+            // try to initialize persistent store coordinator with options defined below
+            self.persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_managedObjectModel];
+            [self.persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                          configuration:nil
+                                                                    URL:storeURL
+                                                                options:persistentOptions
+                                                                  error:&error];
+
+            if (error) {
+                NSLog(@"[ERROR] Problems to initialize persistent store coordinator: %@, %@", error, [error localizedDescription]);
+            }
+        }
     }
+    
+//    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_managedObjectModel];
+//    NSPersistentStore *store = [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:nil];
+//    if(!store) {
+//        abort();
+//    }
     
     _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     _managedObjectContext.persistentStoreCoordinator = _persistentStoreCoordinator;

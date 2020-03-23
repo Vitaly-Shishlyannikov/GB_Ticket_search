@@ -22,7 +22,7 @@
 		589C1D9F23F6ACDE00A45CD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 589C1D9E23F6ACDE00A45CD5 /* main.m */; };
 		58ABD1BC242108EE0025E25F /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ABD1BB242108EE0025E25F /* ResultsViewController.m */; };
 		58C7AF202424E6BF00805D26 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AF1F2424E6BF00805D26 /* CoreDataHelper.m */; };
-		58C7AF232424E83B00805D26 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AF212424E83B00805D26 /* Model.xcdatamodeld */; };
+		58C7AF232424E83B00805D26 /* news.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AF212424E83B00805D26 /* news.xcdatamodeld */; };
 		58C7AF282424E86800805D26 /* FavoriteNews+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AF262424E86800805D26 /* FavoriteNews+CoreDataClass.m */; };
 		58C7AF292424E86800805D26 /* FavoriteNews+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AF272424E86800805D26 /* FavoriteNews+CoreDataProperties.m */; };
 		58ECD161240C499F00224FAB /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ECD160240C499F00224FAB /* APIManager.m */; };
@@ -150,7 +150,7 @@
 				58C7AF252424E86800805D26 /* FavoriteNews+CoreDataClass.h */,
 				58C7AF262424E86800805D26 /* FavoriteNews+CoreDataClass.m */,
 				58C7AF272424E86800805D26 /* FavoriteNews+CoreDataProperties.m */,
-				58C7AF212424E83B00805D26 /* Model.xcdatamodeld */,
+				58C7AF212424E83B00805D26 /* news.xcdatamodeld */,
 				5842D349240C62CF00F861EE /* Default-568h@2x.png */,
 				589C1D8B23F6ACDD00A45CD5 /* GB_TicketSearch */,
 				589C1D8A23F6ACDD00A45CD5 /* Products */,
@@ -252,7 +252,7 @@
 			files = (
 				5842D34D240CDEA500F861EE /* NewsTableViewController.m in Sources */,
 				58340254241F7F20000A44CF /* PhotoCollectionViewCell.m in Sources */,
-				58C7AF232424E83B00805D26 /* Model.xcdatamodeld in Sources */,
+				58C7AF232424E83B00805D26 /* news.xcdatamodeld in Sources */,
 				58ECD164240C4D8C00224FAB /* News.m in Sources */,
 				589C1D8E23F6ACDD00A45CD5 /* AppDelegate.m in Sources */,
 				58C7AF292424E86800805D26 /* FavoriteNews+CoreDataProperties.m in Sources */,
@@ -459,13 +459,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		58C7AF212424E83B00805D26 /* Model.xcdatamodeld */ = {
+		58C7AF212424E83B00805D26 /* news.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				58C7AF222424E83B00805D26 /* Model.xcdatamodel */,
 			);
 			currentVersion = 58C7AF222424E83B00805D26 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			path = news.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
