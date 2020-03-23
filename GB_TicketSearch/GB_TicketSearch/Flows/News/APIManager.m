@@ -8,7 +8,6 @@
 //
 
 #import "APIManager.h"
-#import "News.h"
 
 #define API_URL @"http://newsapi.org/v2/top-headlines"
 #define API_SOURCES @"techcrunch"

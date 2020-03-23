@@ -21,6 +21,16 @@
     return self;
 }
 
+- (void)setNews:(News *)news {
+    _news = news;
+    _titleLabel.text = news.title;
+}
+
+- (void)setFavoriteNews:(FavoriteNews *)favoriteNews {
+    _favoriteNews = favoriteNews;
+    _titleLabel.text = favoriteNews.title;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

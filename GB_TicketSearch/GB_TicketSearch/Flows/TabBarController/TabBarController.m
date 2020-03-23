@@ -27,7 +27,11 @@
         newsVC.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:2];
         UINavigationController *newsNC = [[UINavigationController alloc] initWithRootViewController:newsVC];
         
-        self.viewControllers = @[photosVC, mapViewConroller, newsNC];
+        NewsTableViewController *favoriteViewController = [[NewsTableViewController alloc] initFavoritesNewsViewController];
+        favoriteViewController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:3];
+        UINavigationController *favoriteNewsNC = [[UINavigationController alloc] initWithRootViewController:favoriteViewController];
+        
+        self.viewControllers = @[photosVC, mapViewConroller, newsNC, favoriteNewsNC];
         self.tabBar.tintColor = [UIColor blueColor];
         self.selectedIndex = 0;
         

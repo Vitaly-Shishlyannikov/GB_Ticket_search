@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FavoriteNews+CoreDataClass.h"
+#import "News.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NewsTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) UILabel *titleLabel;
+@property(strong, nonatomic) UILabel *titleLabel;
+@property(strong,nonatomic) News *news;
+@property(strong,nonatomic) FavoriteNews *favoriteNews;
 
 @end
 

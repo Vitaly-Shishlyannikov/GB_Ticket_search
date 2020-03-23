@@ -10,6 +10,7 @@
 #import "APIManager.h"
 #import "NewsTableViewCell.h"
 #import "NewsDetailViewController.h"
+#import "CoreDataHelper.h"
 
 #define NewsCellReuseIdentifier @"​NewsCellIdentifier"
 
@@ -17,9 +18,23 @@
 @property (nonatomic, strong) NSArray *news;
 @end
 
-@implementation NewsTableViewController
+@implementation NewsTableViewController {
+    BOOL isFavorites;
+}
 
--(instancetype)initWithNews:(NSArray *)news {
+- (instancetype)initFavoritesNewsViewController {
+    self = [super init];
+    if(self) {
+        isFavorites = YES;
+        self.news = [NSArray new];
+        self.title = @"Favorite News";
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [self.tableView registerClass:[NewsTableViewCell class] forCellReuseIdentifier:NewsCellReuseIdentifier];
+    }
+    return self;
+}
+
+- (instancetype)initWithNews:(NSArray *)news {
     self = [super init];
     if(self) {
         _news = news;
@@ -31,14 +46,23 @@
     return self;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [[APIManager sharedInstance] getNews:^(NSArray * _Nonnull news) {
         _news = news;
-        [self.tableView reloadData];
+    [self.tableView reloadData];
     }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if(isFavorites) {
+        self.navigationController.navigationBar.prefersLargeTitles = YES;
+        _news = [[CoreDataHelper sharedInstance] favorites];
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - Table view data source
@@ -49,20 +73,55 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NewsCellReuseIdentifier];
-    if(!cell) {
-        cell = [[NewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NewsCellReuseIdentifier];
+    
+    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NewsCellReuseIdentifier forIndexPath:indexPath];
+    
+    if(isFavorites) {
+        cell.favoriteNews = [_news objectAtIndex:indexPath.row];
+    } else {
+        cell.news = [_news objectAtIndex:indexPath.row];
     }
-    News *article = _news[indexPath.row];
-    cell.titleLabel.text = article.title;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+//    if(!cell) {
+//        cell = [[NewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NewsCellReuseIdentifier];
+//    }
+//    News *article = _news[indexPath.row];
+//    cell.titleLabel.text = article.title;
     
     return  cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 140.0;
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    News *article = _news[indexPath.row];
-    NewsDetailViewController *detailController = [[NewsDetailViewController alloc]initWithArticle:article];
-    [self.navigationController showViewController:detailController sender:self];
+    
+    if(isFavorites) return;
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Действия с новостью" message:@"Что сделать с выбранной новостью?" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *favoriteAction;
+    if([[CoreDataHelper sharedInstance] isFavorite:[_news objectAtIndex:indexPath.row]]) {
+        favoriteAction = [UIAlertAction actionWithTitle:@"Удалить из избранного" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [[CoreDataHelper sharedInstance] removeFromFavorite:[_news objectAtIndex:indexPath.row]];
+        }];
+    } else {
+        favoriteAction = [UIAlertAction actionWithTitle:@"Добавить в избранное" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[CoreDataHelper sharedInstance] addToFavorite:[_news objectAtIndex: indexPath.row]];
+        }];
+    }
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Закрыть" style:UIAlertActionStyleCancel handler:nil];
+    [alertController addAction:favoriteAction];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+
+//
+//
+//    News *article = _news[indexPath.row];
+//    NewsDetailViewController *detailController = [[NewsDetailViewController alloc]initWithArticle:article];
+//    [self.navigationController showViewController:detailController sender:self];
 }
 
 
