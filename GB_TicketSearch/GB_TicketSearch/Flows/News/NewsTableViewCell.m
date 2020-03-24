@@ -19,10 +19,19 @@
         _titleLabel.font = [UIFont systemFontOfSize:20.0 weight: UIFontWeightMedium];
         [self.contentView addSubview:_titleLabel];
         
-        CGRect imageFrame = CGRectMake([UIScreen mainScreen].bounds.size.width * 0.75 , 0.0, 100.0, 100.0);
-        _articleImageView = [[UIImageView alloc] initWithFrame:imageFrame];
+        _articleImageView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width * 0.75 , 0.0, 90.0, 90.0)];
         _articleImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:_articleImageView];
+        
+        _favoriteBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        [self.contentView addSubview:_favoriteBtn];
+        
+        _favoriteBtn.translatesAutoresizingMaskIntoConstraints = NO;
+        NSLayoutConstraint *buttonXConstraint = [_favoriteBtn.centerXAnchor constraintEqualToAnchor:_articleImageView.centerXAnchor];
+        NSLayoutConstraint *buttonTopConstraint = [_favoriteBtn.topAnchor constraintEqualToAnchor:_articleImageView.bottomAnchor];
+        buttonTopConstraint.active = YES;
+        buttonXConstraint.active = YES;
+        
     }
     return self;
 }
@@ -30,8 +39,11 @@
 - (void)setNews:(News *)news {
     _news = news;
     _titleLabel.text = news.title;
-    NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: news.urlToImage]];
-    _articleImageView.image = [UIImage imageWithData: imageData];
+    
+    NSURL *imgURL = [NSURL URLWithString:news.urlToImage];
+    [self downloadImageWithURL:imgURL completionBlock:^(BOOL succeeded, UIImage *image) {
+        _articleImageView.image = image;
+    }];
 }
 
 - (void)setFavoriteNews:(FavoriteNews *)favoriteNews {
@@ -39,6 +51,23 @@
     _titleLabel.text = favoriteNews.title;
     NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: favoriteNews.urlToImage]];
     _articleImageView.image = [UIImage imageWithData: imageData];
+}
+
+- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
+{
+     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+          completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+             if ( !error )
+              {
+                data = [NSData dataWithContentsOfURL:url];
+                UIImage *image = [[UIImage alloc] initWithData:data];
+                completionBlock(YES,image);
+              } else{
+                 NSLog(@"Error in downloading image:%@",url);
+                 completionBlock(NO,nil);
+              }
+           }];
 }
 
 - (void)awakeFromNib {

@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong,nonatomic) News *news;
 @property(strong,nonatomic) FavoriteNews *favoriteNews;
 @property(strong,nonatomic) UIImageView *articleImageView;
+@property(strong,nonatomic) UIButton *favoriteBtn;
 
 @end
 

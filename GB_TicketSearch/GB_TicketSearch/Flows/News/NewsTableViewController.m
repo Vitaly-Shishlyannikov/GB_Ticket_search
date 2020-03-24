@@ -15,7 +15,10 @@
 #define NewsCellReuseIdentifier @"​NewsCellIdentifier"
 
 @interface NewsTableViewController ()
-@property (nonatomic, strong) NSArray *news;
+@property (nonatomic,strong) NSArray *news;
+@property (nonatomic,strong) UILongPressGestureRecognizer *longPressGesture;
+@property (nonatomic) BOOL doubleTapped;
+@property (nonatomic) NSInteger tmpIndex;
 @end
 
 @implementation NewsTableViewController {
@@ -49,6 +52,10 @@
         _news = news;
     [self.tableView reloadData];
     }];
+    
+//    UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+//    doubleTapGesture.numberOfTapsRequired = 2;
+//    [self.tableView addGestureRecognizer:doubleTapGesture];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -75,92 +82,56 @@
         cell = [[NewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NewsCellReuseIdentifier];
     }
     
+    cell.favoriteBtn.tag = indexPath.row;
+    [cell.favoriteBtn addTarget:self action:@selector(openFavoriteMenu:) forControlEvents:UIControlEventTouchUpInside];
+    
     if(isFavorites) {
         cell.favoriteNews = [_news objectAtIndex:indexPath.row];
     } else {
         cell.news = [_news objectAtIndex:indexPath.row];
+        if([[CoreDataHelper sharedInstance] isFavorite:[_news objectAtIndex:indexPath.row]]) {
+            [cell.favoriteBtn setBackgroundImage:[UIImage systemImageNamed:@"star.fill"] forState:UIControlStateNormal];
+        } else {
+            [cell.favoriteBtn setBackgroundImage:[UIImage systemImageNamed:@"star"] forState:UIControlStateNormal];
+        }
     }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
    
     return  cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 140.0;
+    return 120.0;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    if(isFavorites) return;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    News *article = _news[indexPath.row];
+    NewsDetailViewController *detailController = [[NewsDetailViewController alloc]initWithArticle:article];
+    [self.navigationController showViewController:detailController sender:self];
+}
+
+- (void)openFavoriteMenu: (UIButton*)sender {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Действия с новостью" message:@"Что сделать с выбранной новостью?" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *favoriteAction;
-    if([[CoreDataHelper sharedInstance] isFavorite:[_news objectAtIndex:indexPath.row]]) {
+    if([[CoreDataHelper sharedInstance] isFavorite:[_news objectAtIndex:sender.tag]]) {
         favoriteAction = [UIAlertAction actionWithTitle:@"Удалить из избранного" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            [[CoreDataHelper sharedInstance] removeFromFavorite:[_news objectAtIndex:indexPath.row]];
-            [tableView reloadData];
+            [[CoreDataHelper sharedInstance] removeFromFavorite:[_news objectAtIndex: sender.tag]];
+            [self.tableView reloadData];
         }];
     } else {
         favoriteAction = [UIAlertAction actionWithTitle:@"Добавить в избранное" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [[CoreDataHelper sharedInstance] addToFavorite:[_news objectAtIndex: indexPath.row]];
+            [[CoreDataHelper sharedInstance] addToFavorite:[_news objectAtIndex: sender.tag]];
+            [self.tableView reloadData];
         }];
     }
-    
+
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Закрыть" style:UIAlertActionStyleCancel handler:nil];
     [alertController addAction:favoriteAction];
     [alertController addAction:cancelAction];
     [self presentViewController:alertController animated:YES completion:nil];
-
-//
-//
-//    News *article = _news[indexPath.row];
-//    NewsDetailViewController *detailController = [[NewsDetailViewController alloc]initWithArticle:article];
-//    [self.navigationController showViewController:detailController sender:self];
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
