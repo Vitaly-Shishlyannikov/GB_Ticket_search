@@ -6,6 +6,7 @@
 //  Copyright © 2020 Vitaly_Shishlayannikov. All rights reserved.
 //
 
+#import <UserNotifications/UserNotifications.h>
 #import "PhotoViewController.h"
 #import "PhotoCollectionViewCell.h"
 #import "ResultsViewController.h"
@@ -63,6 +64,8 @@
     [subViewForSearchBar addSubview:addPhotoButton];
     [subViewForSearchBar addSubview: _searchController.searchBar];
     [self.view addSubview:_collectionView];
+    
+    [self showNotification];
 }
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
@@ -77,6 +80,19 @@
         _resultsController.results = images;
         [_resultsController.collectionView reloadData];
     }
+}
+
+- (void)showNotification {
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    content.title = @"Сообщение!";
+    content.body = @"Приложение было запущено 5 секунд назад!";
+    content.sound = [UNNotificationSound defaultSound];
+    
+    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:NO];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Notification"
+    content:content trigger:trigger];
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    [center addNotificationRequest:request withCompletionHandler:nil];
 }
 
 #pragma mark - CollectionViewDataSource
