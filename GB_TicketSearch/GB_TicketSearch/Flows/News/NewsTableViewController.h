@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NewsTableViewController : UITableViewController
 
--(instancetype)initFavoritesNewsViewController;
+- (instancetype)initFavoritesNewsViewController;
 
 @end
 

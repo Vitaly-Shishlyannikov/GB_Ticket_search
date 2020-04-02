@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NewsDetailViewController : UIViewController
 
--(instancetype)initWithArticle:(News*)article;
+@property(nonatomic)NSInteger index;
+- (instancetype)initWithArticle:(News*)article forIndex:(NSInteger)index;
 
 @end
 

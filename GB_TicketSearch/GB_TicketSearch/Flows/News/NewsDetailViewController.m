@@ -15,9 +15,10 @@
 
 @implementation NewsDetailViewController
 
--(instancetype)initWithArticle:(News*)article {
+- (instancetype)initWithArticle:(News*)article forIndex:(NSInteger)index {
     self = [super init];
     if(self) {
+        _index = index;
         _article = article;
         self.title = article.title;
     }
@@ -43,7 +44,7 @@
     contentView.text = _article.content;
     [self.view addSubview:contentView];
     
-    CGRect linkButtonFrame = CGRectMake(0.0, [UIScreen mainScreen].bounds.size.height / 1.2, [UIScreen mainScreen].bounds.size.width, 50.0);
+    CGRect linkButtonFrame = CGRectMake(0.0, [UIScreen mainScreen].bounds.size.height / 1.2, [UIScreen mainScreen].bounds.size.width, 30.0);
     UIButton *linkButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [linkButton setTitle:_article.url forState:UIControlStateNormal];
     linkButton.backgroundColor = [UIColor clearColor];
@@ -56,16 +57,6 @@
 - (void)openLinkInSafari:(UIButton *)sender {
       NSURL *url = [[ NSURL alloc] initWithString: _article.url ];
       [[UIApplication sharedApplication] openURL:url];
-  }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
-
+ 
 @end

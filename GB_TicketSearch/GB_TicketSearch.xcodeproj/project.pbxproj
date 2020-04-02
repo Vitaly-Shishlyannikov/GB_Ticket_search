@@ -15,6 +15,7 @@
 		5842D34D240CDEA500F861EE /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842D34C240CDEA500F861EE /* NewsTableViewController.m */; };
 		5842D350240CE07300F861EE /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842D34F240CE07300F861EE /* NewsTableViewCell.m */; };
 		5842D353240CF74000F861EE /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842D352240CF74000F861EE /* NewsDetailViewController.m */; };
+		584F54BA24331EA2004F69A4 /* NewsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 584F54B924331EA2004F69A4 /* NewsPageViewController.m */; };
 		586ADAD8241672CB00975BCC /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 586ADAD7241672CB00975BCC /* LocationService.m */; };
 		589C1D8E23F6ACDD00A45CD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 589C1D8D23F6ACDD00A45CD5 /* AppDelegate.m */; };
 		589C1D9923F6ACDE00A45CD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 589C1D9823F6ACDE00A45CD5 /* Assets.xcassets */; };
@@ -45,6 +46,8 @@
 		5842D34F240CE07300F861EE /* NewsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
 		5842D351240CF74000F861EE /* NewsDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
 		5842D352240CF74000F861EE /* NewsDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsDetailViewController.m; sourceTree = "<group>"; };
+		584F54B824331EA2004F69A4 /* NewsPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsPageViewController.h; sourceTree = "<group>"; };
+		584F54B924331EA2004F69A4 /* NewsPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsPageViewController.m; sourceTree = "<group>"; };
 		586ADAD6241672CB00975BCC /* LocationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
 		586ADAD7241672CB00975BCC /* LocationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		589C1D8923F6ACDD00A45CD5 /* GB_TicketSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GB_TicketSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,8 +90,6 @@
 				58340246241F6C81000A44CF /* PhotoCollection */,
 				58340245241F6C7C000A44CF /* Map */,
 				58340244241F6C77000A44CF /* News */,
-				58C7AF1E2424E6BF00805D26 /* CoreDataHelper.h */,
-				58C7AF1F2424E6BF00805D26 /* CoreDataHelper.m */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -96,6 +97,7 @@
 		58340244241F6C77000A44CF /* News */ = {
 			isa = PBXGroup;
 			children = (
+				584F54B724331B12004F69A4 /* CoreData */,
 				5842D34B240CDEA500F861EE /* NewsTableViewController.h */,
 				5842D34C240CDEA500F861EE /* NewsTableViewController.m */,
 				5842D351240CF74000F861EE /* NewsDetailViewController.h */,
@@ -106,6 +108,8 @@
 				58ECD163240C4D8C00224FAB /* News.m */,
 				58ECD15F240C499F00224FAB /* APIManager.h */,
 				58ECD160240C499F00224FAB /* APIManager.m */,
+				584F54B824331EA2004F69A4 /* NewsPageViewController.h */,
+				584F54B924331EA2004F69A4 /* NewsPageViewController.m */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -143,14 +147,23 @@
 			path = TabBarController;
 			sourceTree = "<group>";
 		};
-		589C1D8023F6ACDD00A45CD5 = {
+		584F54B724331B12004F69A4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				58C7AF212424E83B00805D26 /* news.xcdatamodeld */,
 				58C7AF242424E86800805D26 /* FavoriteNews+CoreDataProperties.h */,
 				58C7AF252424E86800805D26 /* FavoriteNews+CoreDataClass.h */,
 				58C7AF262424E86800805D26 /* FavoriteNews+CoreDataClass.m */,
 				58C7AF272424E86800805D26 /* FavoriteNews+CoreDataProperties.m */,
-				58C7AF212424E83B00805D26 /* news.xcdatamodeld */,
+				58C7AF1E2424E6BF00805D26 /* CoreDataHelper.h */,
+				58C7AF1F2424E6BF00805D26 /* CoreDataHelper.m */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		589C1D8023F6ACDD00A45CD5 = {
+			isa = PBXGroup;
+			children = (
 				5842D349240C62CF00F861EE /* Default-568h@2x.png */,
 				589C1D8B23F6ACDD00A45CD5 /* GB_TicketSearch */,
 				589C1D8A23F6ACDD00A45CD5 /* Products */,
@@ -264,6 +277,7 @@
 				58C7AF202424E6BF00805D26 /* CoreDataHelper.m in Sources */,
 				5834023F241F635D000A44CF /* TabBarController.m in Sources */,
 				586ADAD8241672CB00975BCC /* LocationService.m in Sources */,
+				584F54BA24331EA2004F69A4 /* NewsPageViewController.m in Sources */,
 				58340251241F7CA9000A44CF /* PhotoViewController.m in Sources */,
 				589C1D9F23F6ACDE00A45CD5 /* main.m in Sources */,
 				58ABD1BC242108EE0025E25F /* ResultsViewController.m in Sources */,

@@ -11,6 +11,7 @@
 #import "NewsTableViewCell.h"
 #import "NewsDetailViewController.h"
 #import "CoreDataHelper.h"
+#import "NewsPageViewController.h"
 
 #define NewsCellReuseIdentifier @"​NewsCellIdentifier"
 
@@ -52,10 +53,6 @@
         _news = news;
     [self.tableView reloadData];
     }];
-    
-//    UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
-//    doubleTapGesture.numberOfTapsRequired = 2;
-//    [self.tableView addGestureRecognizer:doubleTapGesture];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -107,9 +104,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    News *article = _news[indexPath.row];
-    NewsDetailViewController *detailController = [[NewsDetailViewController alloc]initWithArticle:article];
-    [self.navigationController showViewController:detailController sender:self];
+    NewsPageViewController *firstPageVC = [[NewsPageViewController alloc] initWithNews:_news atIndex:indexPath.row transitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    [self.navigationController showViewController:firstPageVC sender:self];
 }
 
 - (void)openFavoriteMenu: (UIButton*)sender {
