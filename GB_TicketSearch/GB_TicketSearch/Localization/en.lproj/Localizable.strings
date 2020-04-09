@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  GB_TicketSearch
+
+  Created by Vitaly_Shishlyannikov on 09.04.2020.
+  Copyright © 2020 Vitaly_Shishlayannikov. All rights reserved.
+*/
+
+// TabBarController
+
+"tabItem_photos" = "Photo collection";
+"tabItem_map" = "Map";
+"tabItem_news" = "News";
+"tabItem_favoriteNews" = "Favorite News";
+
+// News
+"news" = "News";
+"favorite_news" = "Favorite news";

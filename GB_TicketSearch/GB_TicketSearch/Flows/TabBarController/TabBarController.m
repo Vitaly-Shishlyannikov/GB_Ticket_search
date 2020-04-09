@@ -10,6 +10,7 @@
 #import "NewsTableViewController.h"
 #import "MapViewController.h"
 #import "PhotoViewController.h"
+#import "NSString+Localize.h"
 
 @implementation TabBarController
 
@@ -18,17 +19,17 @@
     if(self) {
         
         PhotoViewController *photosVC = [[PhotoViewController alloc]init];
-        photosVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Photo collection" image:[UIImage systemImageNamed:@"photo.on.rectangle"] tag:0];
+        photosVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:[@"tabItem_photos" localize] image:[UIImage systemImageNamed:@"photo.on.rectangle"] tag:0];
         
         MapViewController *mapViewConroller = [[MapViewController alloc] init];
-        mapViewConroller.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Map" image:[UIImage systemImageNamed:@"map"] tag:1];
+        mapViewConroller.tabBarItem = [[UITabBarItem alloc] initWithTitle:[@"tabItem_map" localize] image:[UIImage systemImageNamed:@"map"] tag:1];
         
         NewsTableViewController *newsVC = [[NewsTableViewController alloc] init];
-        newsVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"News" image:[UIImage systemImageNamed:@"bubble.left"] tag:2];
+        newsVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:[@"tabItem_news" localize] image:[UIImage systemImageNamed:@"bubble.left"] tag:2];
         UINavigationController *newsNC = [[UINavigationController alloc] initWithRootViewController:newsVC];
         
         NewsTableViewController *favoriteViewController = [[NewsTableViewController alloc] initFavoritesNewsViewController];
-        favoriteViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Favorite news" image:[UIImage systemImageNamed:@"plus.bubble"] tag:3];
+        favoriteViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:[@"tabItem_favoriteNews" localize] image:[UIImage systemImageNamed:@"plus.bubble"] tag:3];
         UINavigationController *favoriteNewsNC = [[UINavigationController alloc] initWithRootViewController:favoriteViewController];
         
         self.viewControllers = @[photosVC, mapViewConroller, newsNC, favoriteNewsNC];

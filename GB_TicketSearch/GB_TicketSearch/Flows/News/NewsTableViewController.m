@@ -12,6 +12,7 @@
 #import "NewsDetailViewController.h"
 #import "CoreDataHelper.h"
 #import "NewsPageViewController.h"
+#import "NSString+Localize.h"
 
 #define NewsCellReuseIdentifier @"​NewsCellIdentifier"
 
@@ -29,7 +30,7 @@
 - (instancetype)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if(self) {
-        self.title = @"News";
+        self.title = [@"news" localize];
         [self.tableView registerClass:[NewsTableViewCell class] forCellReuseIdentifier:NewsCellReuseIdentifier];
     }
     return self;
@@ -40,7 +41,7 @@
     if(self) {
         isFavorites = YES;
         self.news = [NSArray new];
-        self.title = @"Favorite News";
+        self.title = [@"favorite_news" localize];
         [self.tableView registerClass:[NewsTableViewCell class] forCellReuseIdentifier:NewsCellReuseIdentifier];
     }
     return self;
