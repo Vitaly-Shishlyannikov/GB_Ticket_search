@@ -18,6 +18,7 @@
 		584F54BA24331EA2004F69A4 /* NewsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 584F54B924331EA2004F69A4 /* NewsPageViewController.m */; };
 		585B710B243F217900999346 /* NSString+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = 585B710A243F217900999346 /* NSString+Localize.m */; };
 		585B710F243F225300999346 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 585B7111243F225300999346 /* Localizable.strings */; };
+		585B7115243F2A5500999346 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585B7114243F2A5500999346 /* CloudKit.framework */; };
 		586ADAD8241672CB00975BCC /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 586ADAD7241672CB00975BCC /* LocationService.m */; };
 		589C1D8E23F6ACDD00A45CD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 589C1D8D23F6ACDD00A45CD5 /* AppDelegate.m */; };
 		589C1D9923F6ACDE00A45CD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 589C1D9823F6ACDE00A45CD5 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		585B710C243F220F00999346 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		585B7110243F225300999346 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		585B7112243F225700999346 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		585B7114243F2A5500999346 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		586ADAD6241672CB00975BCC /* LocationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
 		586ADAD7241672CB00975BCC /* LocationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		589C1D8923F6ACDD00A45CD5 /* GB_TicketSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GB_TicketSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				585B7115243F2A5500999346 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,12 +181,21 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		585B7113243F2A5400999346 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				585B7114243F2A5500999346 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		589C1D8023F6ACDD00A45CD5 = {
 			isa = PBXGroup;
 			children = (
 				5842D349240C62CF00F861EE /* Default-568h@2x.png */,
 				589C1D8B23F6ACDD00A45CD5 /* GB_TicketSearch */,
 				589C1D8A23F6ACDD00A45CD5 /* Products */,
+				585B7113243F2A5400999346 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
